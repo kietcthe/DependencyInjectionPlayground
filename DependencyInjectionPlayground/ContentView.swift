@@ -8,19 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
-        }
-        .padding()
-    }
+  @EnvironmentObject private var numberGenerator: NumberGenerator
+  
+  var body: some View {
+    NumberScreenView(numberGenerator: numberGenerator)
+  }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+
+struct ContentViewPreview: PreviewProvider {
+  static var previews: some View {
+    ContentView()
+      .environmentObject(NumberGenerator())
+  }
 }
